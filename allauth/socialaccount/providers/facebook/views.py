@@ -46,6 +46,10 @@ def fb_complete_login(request, app, token):
             'access_token': token.token,
             'appsecret_proof': compute_appsecret_proof(app, token)
         })
+    print('-------------')
+    print(resp.status_code)
+    print(resp.text)
+    print('--------------')
     resp.raise_for_status()
     extra_data = resp.json()
     login = provider.sociallogin_from_response(request, extra_data)
